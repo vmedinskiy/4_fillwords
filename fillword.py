@@ -14,13 +14,13 @@ import fillword_maker
 pygame.init()
 time_codes = [15, 205, 328, 464, 628, 763, 864, 920, 1142, 1246, 1363, 1510, 1610, 1728, 1851, 1968,
               2168, 2308, 2454, 2540, 2691, 2801, 2972, 3104, 3222, 3392, 3486]
-pygame.mixer.music.load('music.mp3')
+pygame.mixer.music.load('music.ogg')
 pygame.mixer.music.set_volume(0.1)
 pygame.mixer.music.play(-1)
 pygame.mixer.music.rewind()
 pygame.mixer.music.set_pos(choice(time_codes))
 
-debug = False  # DEBUG-----------------------
+debug = True  # DEBUG-----------------------
 
 
 class Fillword:
@@ -201,12 +201,12 @@ def load():
                 a = fillword_maker.main(values['1'][0], values['2'], values['3'])
                 return Fillword(*a)
 
-    with open(f'data\\{n}\\l.txt', encoding='utf-8') as i:
+    with open(f'data/{n}/l.txt', encoding='utf-8') as i:
         i = list(i.read().strip())
         size = int(len(i) ** 0.5)
         mat = [[i[o + p * size] for o in range(size)] for p in range(size)]
 
-    with open(f'data\\{n}\\s.txt', encoding='utf-8') as i:
+    with open(f'data/{n}/s.txt', encoding='utf-8') as i:
         i = i.read().strip().split()
         shp = []
         for u in i:
